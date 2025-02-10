@@ -111,7 +111,6 @@ input[type="date"]:focus {
     100% { transform: translateY(-300px); opacity: 0; }
 }
 
-
 .heart {
     position: absolute;
     font-size: 2rem;
