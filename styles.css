@@ -6,6 +6,18 @@ body {
     color: #d63384;
     overflow: hidden;
     position: relative;
+    height: 100vh;
+    width: 100vw;
+    touch-action: none;
+    overscroll-behavior: contain;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .container {
@@ -14,8 +26,10 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: 100vw;
     position: relative;
     z-index: 2;
+    overflow: hidden;
 }
 
 .valentine-text {
@@ -89,22 +103,6 @@ input[type="date"] {
 input[type="date"]:focus {
     border-color: #ff1a4c;
     box-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
-}
-
-button {
-    background-color: #ff4d6d;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-button:hover {
-    background-color: #ff1a4c;
-    transform: scale(1.1);
 }
 
 @keyframes floatingHearts {
