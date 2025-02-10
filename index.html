@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be My Valentine?</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Load Firebase Config -->
+    <script src="firebase-config.js"></script>
+    
+    <!-- Main Script -->
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -14,9 +25,34 @@
             <button class="no-button" onclick="handleNoClick()">No 💔</button>
         </div>
         <div class="gif_container">
-            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute Valentine GIF">
+            <img src="https://c.tenor.com/bS59bECl0Y4AAAAd/tenor.gif" alt="Cute Valentine GIF">
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+        setInterval(createHeart, 400);
+    
+        function createSparkle() {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            sparkle.style.left = Math.random() * 100 + "vw";
+            sparkle.style.top = Math.random() * 100 + "vh";
+            sparkle.style.animationDuration = Math.random() * 2 + 2 + "s";
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 3000);
+        }
+        setInterval(createSparkle, 600);
+    </script>
+    
 </body>
 </html>

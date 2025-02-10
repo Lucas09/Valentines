@@ -1,8 +1,11 @@
+/* styles.css */
 body {
     background-color: #ffe6e6;
     font-family: 'Arial', sans-serif;
     text-align: center;
     color: #d63384;
+    overflow: hidden;
+    position: relative;
 }
 
 .container {
@@ -11,6 +14,8 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    position: relative;
+    z-index: 2;
 }
 
 .valentine-text {
@@ -21,6 +26,8 @@ body {
 
 .buttons {
     margin-top: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 button {
@@ -55,10 +62,75 @@ button {
 
 .gif_container {
     margin-top: 30px;
+    position: relative;
+    z-index: 2;
 }
 
 img {
     width: 250px;
     border-radius: 20px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Date Picker Styling */
+input[type="date"] {
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 2px solid #ff4d6d;
+    background-color: #fff0f5;
+    color: #d63384;
+    text-align: center;
+    outline: none;
+    position: relative;
+    z-index: 2;
+}
+
+input[type="date"]:focus {
+    border-color: #ff1a4c;
+    box-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+}
+
+button {
+    background-color: #ff4d6d;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    background-color: #ff1a4c;
+    transform: scale(1.1);
+}
+
+@keyframes floatingHearts {
+    0% { transform: translateY(0); opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { transform: translateY(-300px); opacity: 0; }
+}
+
+.heart {
+    position: absolute;
+    font-size: 2rem;
+    color: #ff4d6d;
+    animation: floatingHearts 5s ease-out infinite;
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.5); }
+}
+
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    animation: sparkle 2s linear infinite;
 }

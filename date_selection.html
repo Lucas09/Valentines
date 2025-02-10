@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick a Date! 💖</title>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Load Firebase Config -->
+    <script src="firebase-config.js"></script>
+    
+    <!-- Main Script -->
+    <script defer src="date-script.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Siden du ikke kan fredag, så vælge en dag i næste uge ❤️</h1>
+        <input type="date" id="dateInput">
+        <button onclick="submitDate()">Submit</button>
+    </div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>

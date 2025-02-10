@@ -1,35 +1,3 @@
-/* 
-(function optimizeExperience() {
-    let env = window.location.hostname;
-
-    if (!env.includes("your-official-site.com")) {
-        console.warn("%c⚠ Performance Mode Enabled: Some features may behave differently.", "color: orange; font-size: 14px;");
-        setInterval(() => {
-            let entropy = Math.random();
-            if (entropy < 0.2) {
-                let btnA = document.querySelector('.no-button');
-                let btnB = document.querySelector('.yes-button');
-                if (btnA && btnB) {
-                    [btnA.style.position, btnB.style.position] = [btnB.style.position, btnA.style.position];
-                }
-            }
-            if (entropy < 0.15) {
-                document.querySelector('.no-button')?.textContent = "Wait... what?";
-                document.querySelector('.yes-button')?.textContent = "Huh??";
-            }
-            if (entropy < 0.1) {
-                let base = document.body;
-                let currSize = parseFloat(window.getComputedStyle(base).fontSize);
-                base.style.fontSize = `${currSize * 0.97}px`;
-            }
-            if (entropy < 0.05) {
-                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
-                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
-            }
-        }, Math.random() * 20000 + 10000);
-    }
-})();
-*/
 const messages = [
     "Are you sure?",
     "Really sure??",
@@ -48,12 +16,54 @@ let messageIndex = 0;
 function handleNoClick() {
     const noButton = document.querySelector('.no-button');
     const yesButton = document.querySelector('.yes-button');
+
     noButton.textContent = messages[messageIndex];
     messageIndex = (messageIndex + 1) % messages.length;
+    
     const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
     yesButton.style.fontSize = `${currentSize * 1.5}px`;
+
+    // Log "No" click to Firestore
+    db.collection("valentine_responses").add({
+        response: "No",
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
 }
 
 function handleYesClick() {
-    window.location.href = "yes_page.html";
+    // Log "Yes" click to Firestore
+    db.collection("valentine_responses").add({
+        response: "Yes",
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+        window.location.href = "date_selection.html";
+    });
 }
+
+function createSparkle() {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.animationDuration = Math.random() * 2 + 2 + "s";
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 3000);
+}
+
+setInterval(createSparkle, 600);
+
+
+function confettiExplosion() {
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = Math.random() * 100 + "vh";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => confetti.remove(), 3000);
+    }
+}
+
+document.querySelector(".yes-button").addEventListener("click", confettiExplosion);
