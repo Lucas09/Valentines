@@ -1,0 +1,64 @@
+body {
+    background-color: #ffe6e6;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: #d63384;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.valentine-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.yes-button {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+.yes-button:hover {
+    background-color: #ff1a4c;
+    transform: scale(1.1);
+}
+
+.no-button {
+    background-color: #ffcccc;
+    color: #d63384;
+}
+
+.no-button:hover {
+    background-color: #ff99aa;
+    transform: scale(1.1);
+}
+
+.gif_container {
+    margin-top: 30px;
+}
+
+img {
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
