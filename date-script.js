@@ -14,4 +14,6 @@ function submitDate() {
         alert("Dato gemt ❤️");
         window.location.href = "index.html";
     });
+    
 }
+

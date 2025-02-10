@@ -50,6 +50,7 @@ function createSparkle() {
     setTimeout(() => sparkle.remove(), 3000);
 }
 
+
 setInterval(createSparkle, 600);
 
 
