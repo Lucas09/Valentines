@@ -7,15 +7,11 @@
     <title>Will You Be My Valentine?</title>
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
-    
-    <!-- Load Firebase Config -->
     <script src="firebase-config.js"></script>
+    <script src="script.js" defer></script>
     
-    <!-- Main Script -->
-    <script defer src="script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -29,18 +25,21 @@
         </div>
     </div>
     <script>
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 3 + 4 + "s";
-            document.body.appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 7000);
-        }
-        setInterval(createHeart, 400);
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    // Randomize horizontal (left) and vertical (top) spawn positions
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = Math.random() * 100 + "vh"; // Fix: Hearts won't all spawn in the middle
+    heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+}
+setInterval(createHeart, 400);
+
     
         function createSparkle() {
             const sparkle = document.createElement("div");
